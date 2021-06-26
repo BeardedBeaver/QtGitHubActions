@@ -20,10 +20,25 @@ jobs:
         qt_version: [5.15.2]
         config:
         - {
+            name: "Windows Latest MSVC", artifact: "Windows-MSVC",
             os: windows-latest,
             cc: "cl", cxx: "cl",
-            binary: 'cpeditor.exe',
-            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
+          }
+        - {
+            name: "Windows Latest MinGW", artifact: "Windows-MinGW",
+            os: windows-latest,
+            cc: "gcc", cxx: "g++",
+          }
+        - {
+            name: "Ubuntu Latest GCC", artifact: "Linux",
+            os: ubuntu-latest,
+            cc: "gcc", cxx: "g++"
+          }
+        - {
+            name: "macOS Latest Clang", artifact: "macOS",
+            os: macos-latest,
+            cc: "clang", cxx: "clang++"
           }
 
     steps:
