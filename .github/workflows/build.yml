@@ -30,7 +30,7 @@ jobs:
         - {
             name: "Windows Latest MinGW", artifact: "Windows-MinGW",
             os: windows-latest,
-            arch: win64_mingw81
+            arch: win64_mingw81,
             cc: "gcc", cxx: "g++",
           }
         - {
