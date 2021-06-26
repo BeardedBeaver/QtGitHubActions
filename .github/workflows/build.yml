@@ -88,7 +88,7 @@ jobs:
         elseif ("${{ runner.os }}" STREQUAL "macOS")
           set(ninja_suffix "mac.zip")
           set(cmake_suffix "macos-universal.tar.gz")
-          set(cmake_dir "cmake-${cmake_version}-Darwin-x86_64/CMake.app/Contents/bin")
+          set(cmake_dir "cmake-${cmake_version}-macos-universal/CMake.app/Contents/bin")
         endif()
         set(ninja_url "https://github.com/ninja-build/ninja/releases/download/v${ninja_version}/ninja-${ninja_suffix}")
         message(STATUS "Downloading ninja fomr: ${ninja_url}")
