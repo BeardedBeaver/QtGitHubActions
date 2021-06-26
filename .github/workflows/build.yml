@@ -13,7 +13,7 @@ env:
 
 jobs:
   build:
-    name: "${{ matrix.config.os }} Qt ${{ matrix.qt_version }}"
+    name: "${{ matrix.config.os }} Qt ${{ matrix.qt_version }} ${{ matrix.config.arch }}"
     runs-on: ${{ matrix.config.os }}
     strategy:
       fail-fast: false
@@ -33,12 +33,7 @@ jobs:
             arch: win64_mingw81,
             cc: "gcc", cxx: "g++",
           }
-        - {
-            name: "Ubuntu Latest GCC", artifact: "Linux",
-            os: ubuntu-latest,
-            arch: x86_64,
-            cc: "gcc", cxx: "g++"
-          }
+
 
     steps:
     - uses: actions/checkout@v2
