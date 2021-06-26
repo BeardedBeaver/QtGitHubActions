@@ -66,9 +66,11 @@ jobs:
           set(cmake_dir "cmake-${cmake_version}-Darwin-x86_64/CMake.app/Contents/bin")
         endif()
         set(ninja_url "https://github.com/ninja-build/ninja/releases/download/v${ninja_version}/ninja-${ninja_suffix}")
+        message(STATUS "Downloading ninja fomr: ${ninja_url}")
         file(DOWNLOAD "${ninja_url}" ./ninja.zip SHOW_PROGRESS)
         execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ./ninja.zip)
         set(cmake_url "https://github.com/Kitware/CMake/releases/download/v${cmake_version}/cmake-${cmake_version}-${cmake_suffix}")
+        message(STATUS "Downloading CMake from: ${cmake_url}")
         file(DOWNLOAD "${cmake_url}" ./cmake.zip SHOW_PROGRESS)
         execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ./cmake.zip)
         # Save the path for other steps
@@ -80,6 +82,8 @@ jobs:
             COMMAND chmod +x ${cmake_dir}/cmake
           )
         endif()
+        message(STATUS "Using host CMake version: ${cmake_url}")
+
 
     - name: Download ccache
       id: ccache
