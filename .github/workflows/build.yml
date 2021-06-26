@@ -7,6 +7,8 @@ on:
 
 env:
   BUILD_TYPE: Release
+  CMAKE_VERSION: 3.19
+  NINJA_VERSION: 1.10.2
 
 jobs:
   build:
@@ -23,6 +25,7 @@ jobs:
             binary: 'cpeditor.exe',
             environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
           }
+
     steps:
     - uses: actions/checkout@v2
 
@@ -79,6 +82,7 @@ jobs:
             COMMAND chmod +x ${cmake_dir}/cmake
           )
         endif()
+
     - name: Download ccache
       id: ccache
       shell: cmake -P {0}
@@ -138,6 +142,7 @@ jobs:
         if (NOT result EQUAL 0)
           message(FATAL_ERROR "Bad exit status")
         endif()
+
     - name: Build
       shell: cmake -P {0}
       run: |
