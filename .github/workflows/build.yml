@@ -16,7 +16,6 @@ jobs:
     name: "${{ matrix.config.os }} Qt ${{ matrix.qt_version }}"
     runs-on: ${{ matrix.config.os }}
     strategy:
-      fail-fast: false
       matrix:
         qt_version: [5.15.2]
         config:
@@ -71,11 +70,21 @@ jobs:
         endif()
         set(ninja_url "https://github.com/ninja-build/ninja/releases/download/v${ninja_version}/ninja-${ninja_suffix}")
         message(STATUS "Downloading ninja fomr: ${ninja_url}")
-        file(DOWNLOAD "${ninja_url}" ./ninja.zip SHOW_PROGRESS RESULT)
+        file(DOWNLOAD "${ninja_url}" ./ninja.zip)
+        if (EXISTS ./ninja.zip)
+          message(STATUS "ninja downloaded")
+        else()
+          message(STATUS "failed to download ninja")
+        endif()
         execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ./ninja.zip)
         set(cmake_url "https://github.com/Kitware/CMake/releases/download/v${cmake_version}/cmake-${cmake_version}-${cmake_suffix}")
         message(STATUS "Downloading CMake from: ${cmake_url}")
-        file(DOWNLOAD "${cmake_url}" ./cmake.zip SHOW_PROGRESS)
+        file(DOWNLOAD "${cmake_url}" ./cmake.zip)
+        if (EXISTS ./cmake.zip)
+          message(STATUS "CMake downloaded")
+        else()
+          message(STATUS "failed to download CMake")
+        endif()
         execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ./cmake.zip)
         # Save the path for other steps
         file(TO_CMAKE_PATH "$ENV{GITHUB_WORKSPACE}/${cmake_dir}" cmake_dir)
