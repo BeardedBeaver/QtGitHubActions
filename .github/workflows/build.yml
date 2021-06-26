@@ -16,6 +16,7 @@ jobs:
     name: "${{ matrix.config.os }} Qt ${{ matrix.qt_version }}"
     runs-on: ${{ matrix.config.os }}
     strategy:
+      fail-fast: false
       matrix:
         qt_version: [5.15.2]
         config:
@@ -34,11 +35,6 @@ jobs:
             name: "Ubuntu Latest GCC", artifact: "Linux",
             os: ubuntu-latest,
             cc: "gcc", cxx: "g++"
-          }
-        - {
-            name: "macOS Latest Clang", artifact: "macOS",
-            os: macos-latest,
-            cc: "clang", cxx: "clang++"
           }
 
     steps:
