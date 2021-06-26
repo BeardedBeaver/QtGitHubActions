@@ -11,23 +11,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt_version: [5.15.2, 6.1]
+        qt_version: [5.15.2]
         config:
         - {
             os: windows-latest,
             cc: "cl", cxx: "cl",
             binary: 'cpeditor.exe',
             environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
-          }
-        - {
-            os: ubuntu-latest,
-            cc: "gcc", cxx: "g++",
-            binary: 'cpeditor'
-          }
-        - {
-            os: macos-latest,
-            cc: "clang", cxx: "clang++",
-            binary: 'cpeditor.app/Contents/MacOS/cpeditor'
           }
     steps:
     - uses: actions/checkout@v2
