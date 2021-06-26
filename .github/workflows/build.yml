@@ -33,12 +33,7 @@ jobs:
             arch: win64_mingw81,
             cc: "gcc", cxx: "g++",
           }
-        - {
-            name: "Ubuntu Latest GCC", artifact: "Linux",
-            os: ubuntu-latest,
-            arch: ,
-            cc: "gcc", cxx: "g++"
-          }
+
 
     steps:
     - uses: actions/checkout@v2
