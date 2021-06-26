@@ -7,6 +7,8 @@ on:
 
 env:
   BUILD_TYPE: Release
+  CMAKE_VERSION: 3.19
+  NINJA_VERSION: 1.10
   CCACHE_VERSION: 3.7.7
 
 jobs:
@@ -50,8 +52,10 @@ jobs:
       id: cmake_and_ninja
       shell: cmake -P {0}
       run: |
-        set(cmake_version ${CMAKE_VERSION})
-        set(ninja_version ${NINJA_VERSION})
+        set(cmake_version $ENV{CMAKE_VERSION})
+        set(ninja_version $ENV{NINJA_VERSION})
+        message(STATUS "Using CMake version: ${CMAKE_VERSION}")
+        message(STATUS "Using CMake version: ${NINJA_VERSION}")
         if ("${{ runner.os }}" STREQUAL "Windows")
           set(ninja_suffix "win.zip")
           set(cmake_suffix "win64-x64.zip")
@@ -82,7 +86,6 @@ jobs:
             COMMAND chmod +x ${cmake_dir}/cmake
           )
         endif()
-        message(STATUS "Using host CMake version: ${cmake_url}")
 
 
     - name: Download ccache
