@@ -33,6 +33,12 @@ jobs:
             arch: win64_mingw81,
             cc: "gcc", cxx: "g++",
           }
+        - {
+            name: "Ubuntu Latest GCC", artifact: "Linux",
+            os: ubuntu-latest,
+            arch: x86_64,
+            cc: "gcc", cxx: "g++"
+          }
 
     steps:
     - uses: actions/checkout@v2
@@ -47,7 +53,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ../Qt
-        key: Qt-${{ matrix.config.os }}-${{ matrix.qt_version }}-${{ matrix.arch }}
+        key: Qt-${{ matrix.config.os }}-${{ matrix.qt_version }}-${{ matrix.config.arch }}
 
     - name: Set up Qt environment
       uses: jurplel/install-qt-action@v2
