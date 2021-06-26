@@ -7,7 +7,6 @@ on:
 
 env:
   BUILD_TYPE: Release
-  CMAKE_VERSION: 3.19
   NINJA_VERSION: 1.10.2
 
 jobs:
@@ -51,9 +50,10 @@ jobs:
       id: cmake_and_ninja
       shell: cmake -P {0}
       run: |
-        set(cmake_version $ENV{CMAKE_VERSION})
+        set(cmake_version ${CMAKE_VERSION})
         set(ninja_version $ENV{NINJA_VERSION})
         message(STATUS "Using host CMake version: ${CMAKE_VERSION}")
+        message(STATUS "Using host ninja version: ${NINJA_VERSION}")
         if ("${{ runner.os }}" STREQUAL "Windows")
           set(ninja_suffix "win.zip")
           set(cmake_suffix "win64-x64.zip")
