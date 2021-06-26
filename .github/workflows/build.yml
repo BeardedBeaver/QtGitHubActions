@@ -55,7 +55,7 @@ jobs:
       with:
         cached: ${{ steps.cache-qt.outputs.cache-hit }}
         version: ${{ matrix.qt_version }}
-        arch: $${ matrix.config.arch }
+        arch: $${{ matrix.config.arch }}
 
     - name: Download Ninja and CMake
       id: cmake_and_ninja
