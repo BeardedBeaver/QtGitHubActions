@@ -52,6 +52,7 @@ else()
 endif()
 
 add_subdirectory(logiclib logiclib)
+add_subdirectory(logiclibtests logiclibtests)
 
 target_link_libraries(GitHubCIForQtTest PRIVATE
     Qt${QT_VERSION_MAJOR}::Widgets
