@@ -27,24 +27,24 @@ jobs:
             environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
             cc: "cl", cxx: "cl"
           }
-        # - {
-        #     name: "Windows Latest MinGW", artifact: "Windows-MinGW",
-        #     os: windows-latest,
-        #     arch: win64_mingw81,
-        #     cc: "gcc", cxx: "g++",
-        #   }
-        # - {
-        #     name: "Ubuntu Latest GCC", artifact: "Linux",
-        #     os: ubuntu-latest,
-        #     arch: x86_64,
-        #     cc: "gcc", cxx: "g++"
-        #   }
-        # - {
-        #     name: "macOS Latest Clang", artifact: "macOS",
-        #     os: macos-latest,
-        #     arch: x86_64,
-        #     cc: "clang", cxx: "clang++"
-        #   }
+        - {
+            name: "Windows Latest MinGW", artifact: "Windows-MinGW",
+            os: windows-latest,
+            arch: win64_mingw81,
+            cc: "gcc", cxx: "g++",
+          }
+        - {
+            name: "Ubuntu Latest GCC", artifact: "Linux",
+            os: ubuntu-latest,
+            arch: x86_64,
+            cc: "gcc", cxx: "g++"
+          }
+        - {
+            name: "macOS Latest Clang", artifact: "macOS",
+            os: macos-latest,
+            arch: x86_64,
+            cc: "clang", cxx: "clang++"
+          }
 
 
     steps:
