@@ -74,4 +74,4 @@ jobs:
         cmake-version: ${{env.CMAKE_VERSION}}
 
     - name: Build
-      run: cmake -DCMAKE_BUILD_TYPE=$ENV{BUILD_TYPE} && cmake --build build
+      run: cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} && cmake --build build
