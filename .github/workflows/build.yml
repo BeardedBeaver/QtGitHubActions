@@ -24,12 +24,14 @@ jobs:
             name: "Windows Latest MSVC", artifact: "Windows-MSVC",
             os: windows-latest,
             arch: win64_msvc2019_64,
+            is_msvc: true,
             cc: "cl", cxx: "cl"
           }
         - {
             name: "Windows Latest MinGW", artifact: "Windows-MinGW",
             os: windows-latest,
             arch: win64_mingw81,
+            is_msvc: false,
             cc: "gcc", cxx: "g++",
           }
         - {
@@ -70,7 +72,7 @@ jobs:
 
     - name: Setup MSBuild
       uses: ilammy/msvc-dev-cmd@v1
-      if: runner.os == 'Windows'
+      if: runner.os == 'Windows' && matrix.config.is_msvc == true
 
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v1.9
