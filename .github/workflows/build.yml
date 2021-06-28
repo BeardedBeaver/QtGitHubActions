@@ -24,7 +24,6 @@ jobs:
             name: "Windows Latest MSVC", artifact: "Windows-MSVC",
             os: windows-latest,
             arch: win64_msvc2019_64,
-            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
             cc: "cl", cxx: "cl"
           }
         - {
@@ -68,6 +67,10 @@ jobs:
         cached: ${{ steps.cache-qt.outputs.cache-hit }}
         version: ${{ matrix.qt_version }}
         arch: ${{ matrix.config.arch }}
+
+    - name: Setup MSBuild
+      uses: ilammy/msvc-dev-cmd@v1
+      if: runner.os == 'Windows'
 
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v1.9
