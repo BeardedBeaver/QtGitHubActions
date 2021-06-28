@@ -73,8 +73,10 @@ jobs:
       with:
         cmake-version: ${{env.CMAKE_VERSION}}
 
-    - name: Configure 
+    - name: Setup Ninja
       uses: seanmiddleditch/gha-setup-ninja@master
+
+    - name: Configure 
       run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
 
     - name: Build
