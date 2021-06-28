@@ -78,11 +78,11 @@ jobs:
       with:
         version: ${{env.NINJA_VERSION}}
 
-      - name: Build with CMake
-        uses: ashutoshvarma/action-cmake-build@master
-        with:
-          build-dir: ${{ runner.workspace }}/build
-          cc: ${{ matrix.config.cc }}
-          cxx: ${{ matrix.config.cxx }}
-          configure-options: -G Ninja
-          build-type: Release
+    - name: Build with CMake
+      uses: ashutoshvarma/action-cmake-build@1.0
+      with:
+        build-dir: ${{ runner.workspace }}/build
+        cc: ${{ matrix.config.cc }}
+        cxx: ${{ matrix.config.cxx }}
+        configure-options: -G Ninja
+        build-type: Release
