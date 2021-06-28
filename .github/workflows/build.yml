@@ -74,9 +74,9 @@ jobs:
         cmake-version: ${{env.CMAKE_VERSION}}
 
     - name: Setup Ninja
-        uses: ashutoshvarma/setup-ninja@v1.1
-        with:
-          version: ${{env.NINJA_VERSION}}
+      uses: ashutoshvarma/setup-ninja@v1.1
+      with:
+        version: ${{env.NINJA_VERSION}}
 
       - name: Build with CMake
         uses: ashutoshvarma/action-cmake-build@master
