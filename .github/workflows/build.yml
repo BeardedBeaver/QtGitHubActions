@@ -74,10 +74,15 @@ jobs:
         cmake-version: ${{env.CMAKE_VERSION}}
 
     - name: Setup Ninja
-      uses: seanmiddleditch/gha-setup-ninja@master
+        uses: ashutoshvarma/setup-ninja@master
+        with:
+          version: ${{env.NINJA_VERSION}}
 
-    - name: Configure 
-      run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -G Ninja
-
-    - name: Build
-      run: cmake --build build .
+      - name: Build with CMake
+        uses: ashutoshvarma/action-cmake-build@master
+        with:
+          build-dir: ${{ runner.workspace }}/build
+          cc: ${{ matrix.config.cc }}
+          cxx: ${{ matrix.config.cxx }}
+          configure-options: -G Ninja
+          build-type: Release
