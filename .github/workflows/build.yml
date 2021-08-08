@@ -92,3 +92,9 @@ jobs:
         cxx: ${{ matrix.config.cxx }}
         configure-options: -G Ninja
         build-type: Release
+
+    - name: Take a look around
+      run: |
+        ls
+        cd ..
+        ls
