@@ -96,5 +96,7 @@ jobs:
     - name: Take a look around
       run: |
         ls
+        echo ---
         cd ..
         ls
+        echo ---
