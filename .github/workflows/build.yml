@@ -96,8 +96,4 @@ jobs:
     - name: Run tests
       run: |
         cd ../build/logiclibtests
-        ls
-        echo ---
-        cd logiclibtests
-        ls
-        echo ---
+        ./logiclibtests
