@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        qt_version: [5.15.2, 6.2.1]
+        qt_version: [5.15.2]
         config:
         # - {
         #     name: "Windows Latest MSVC", artifact: "Windows-MSVC",
@@ -95,4 +95,9 @@ jobs:
 
     - name: Run tests
       run: |
-        cd ../build/logiclibtests & ls
+        cd ../build/logiclibtests
+        ls
+        echo ---
+        cd logiclibtests
+        ls
+        echo ---
