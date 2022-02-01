@@ -52,6 +52,12 @@ set_target_properties(GitHubCIForQtTest PROPERTIES
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
 )
 
+if (WIN32)
+    set_target_properties(GitHubCIForQtTest PROPERTIES
+        WIN32_EXECUTABLE true
+    )
+endif()
+
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(GitHubCIForQtTest)
 endif()
