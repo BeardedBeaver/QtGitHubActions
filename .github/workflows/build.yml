@@ -93,10 +93,6 @@ jobs:
         configure-options: -G Ninja
         build-type: Release
 
-    - name: Take a look around
+    - name Run tests
       run: |
-        ls
-        echo ---
-        cd ..
-        ls
-        echo ---
+        cd ../build/logiclibtests & ./logiclibtests
