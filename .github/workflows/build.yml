@@ -95,4 +95,4 @@ jobs:
 
     - name: Run tests
       run: |
-        cd ../build/logiclibtests & ./logiclibtests
+        cd ../build/logiclibtests & ls
